@@ -1,0 +1,25 @@
+version: "3"
+services:
+  mysql:
+    image: "mysql:5.7.8"
+    container_name: project-api-mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    environment:
+      MYSQL_DATABASE: api_db
+      MYSQL_ROOT_PASSWORD: root
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: project-api-app
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      MYSQL_HOST: project-api-mysql
+      MYSQL_DATABASE: api_db
+      MYSQL_ROOT_PASSWORD: root

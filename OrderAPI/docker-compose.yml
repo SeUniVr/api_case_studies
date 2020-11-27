@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+#Nginx Service
+    nginx:
+        build: ./nginx/
+        container_name: orderapi_nginx
+        dns_search: nginx
+        ports:
+            - 8080:80
+        volumes:
+            - "./src:/var/www/html:ro"
+        links:
+            - php
+            - mysql
+        depends_on:
+            - composer
+        restart: on-failure
+
+#PHP Service
+    php:
+        build: ./php/
+        container_name: orderapi_php
+        expose:
+            - 9000
+        volumes:
+            - "./src:/var/www/html"
+        working_dir: /var/www/html
+        dns_search: php
+        depends_on:
+            - mysql
+        dns:
+            - 8.8.8.8
+            - 8.8.4.4
+        restart: on-failure
+
+#MySQL Service
+    mysql:
+        build: ./mysql/
+        container_name: orderapi_mysql
+        ports:
+            - 3306:3306
+        dns_search: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: "pass@12345"
+            MYSQL_DATABASE: "packageorders"
+        restart: on-failure
+
+#Composer Service
+    composer:
+        container_name: orderapi_composer
+        image: koutsoumpos89/composer-php7.1
+        command: install --ignore-platform-reqs
+        working_dir: /var/www/html
+        volumes:
+            - "./src:/var/www/html"
+        restart: on-failure
+
+volumes:
+    db-data:
+      driver: local

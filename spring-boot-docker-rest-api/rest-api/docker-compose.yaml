@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: sbdra-mysql
+    volumes:
+      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/initdb.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sbdra-db
+      MYSQL_USER: 
+      MYSQL_PASSWORD: 
+    ports:
+      - "3306:3306"
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sbdra-webapp
+    depends_on:
+       - mysql
+    restart: on-failure
+    environment:
+      ACTIVE_PROFILE: "dev"
+      DB_HOST: sbdra-mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASS: root
+      DB_NAME: sbdra-db
+    ports:
+      - "8080:9090"

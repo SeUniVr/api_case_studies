@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  webapp:
+    build: 
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: toggleApiApp
+    ports:
+      - 8080:5001
+      - 8081:5000
+
+  mysql:
+    image: mysql:8.0.3
+    container_name: toggleApiMysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+

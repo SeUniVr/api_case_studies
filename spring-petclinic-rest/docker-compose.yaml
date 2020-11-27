@@ -1,0 +1,26 @@
+version: "3"
+services:
+  mysql:
+    image: "mysql:5.7.8"
+    container_name: mysql-petclinic
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/main/resources/db/mysql/initDB.sql:/docker-entrypoint-initdb.d/initDB.sql
+      - ./src/main/resources/db/mysql/populateDB.sql:/docker-entrypoint-initdb.d/populateDB.sql
+    environment:
+      MYSQL_DATABASE: petclinic
+      MYSQL_ROOT_PASSWORD: petclinic
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: petclinic-app
+    restart: on-failure
+    ports:
+      - "8080:9966"
+    environment:
+      MYSQL_HOST: mysql-petclinic
+      MYSQL_DATABASE: petclinic
+      MYSQL_ROOT_PASSWORD: petclinic

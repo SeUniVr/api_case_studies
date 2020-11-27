@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+  mysql:
+    image: mysql:5.7.21
+    container_name: widgets-spa-mysql-app
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      MYSQL_DATABASE: spa
+      MYSQL_ROOT_PASSWORD: mysql-secret-pw
+    healthcheck:
+      test: ["CMD", "mysqladmin",  "ping", "--silent"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: widgets-spa-app
+    restart: on-failure
+    ports:
+      - "8080:8081"
+      - "8081:80"
+    environment:
+      MYSQL_HOST: widgets-spa-mysql-app
+      MYSQL_DATABASE: spa
+      MYSQL_ROOT_PASSWORD: mysql-secret-pw

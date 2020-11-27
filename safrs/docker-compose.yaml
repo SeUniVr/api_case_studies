@@ -1,0 +1,10 @@
+version: "3"
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: demo-relationship-app
+    restart: on-failure
+    ports:
+      - "8080:5000"
