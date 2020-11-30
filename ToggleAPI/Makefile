@@ -87,6 +87,6 @@ clean:
 
 get-swagger-spec:
 	@echo Getting swagger speciication..
-	curl http://localhost:8080/swagger/swagger.json > ./swagger-specification.json
+	curl -k https://localhost:8080/swagger/v1/swagger.json > ./swagger-specification.json
 	@echo Done.
 	cat ./swagger-specification.json

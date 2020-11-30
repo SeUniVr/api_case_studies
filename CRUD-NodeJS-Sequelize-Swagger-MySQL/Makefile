@@ -5,22 +5,11 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ########################################################
-# The following command is used to build the containers
-# before the first execution
-
-build:
-	make clean
-
-	@echo Building the containers..
-	docker-compose build
-
-########################################################
 # The following command are used to build the containers
 # and the app before the first execution.
 
 build:
 	make clean
-	@echo Building the sources..
 
 	@echo Building the containers..
 	docker-compose build
