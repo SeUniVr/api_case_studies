@@ -1,7 +1,7 @@
 {
-  "database_host": "",
-  "database_port": "",
-  "database_name": "",
-  "database_username": "",
-  "database_password": ""
+  "database_host": "localhost",
+  "database_port": "3360",
+  "database_name": "db",
+  "database_username": "user",
+  "database_password": "password"
 }
