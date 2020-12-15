@@ -1,0 +1,184 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "OrderAPI",
+    "version": "1.0.0",
+    "title": "OrderAPI",
+    "contact": {
+      "email": "siddharth.jain01@nagarro.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Orders",
+      "description": "OrdersAPI"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/orders": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Add a new order",
+        "description": "Add a new order",
+        "operationId": "addOrder",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Order object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Orders"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Request denied"
+          },
+          "406": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get All Orders",
+        "description": "Get All Orders",
+        "operationId": "listorder",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "description": "Current Page No.",
+            "required": true,
+            "type": "number",
+            "default": 1
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "No. of items to be return",
+            "required": true,
+            "type": "number",
+            "default": 5
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Request denied"
+          },
+          "406": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/orders/{orderId}": {
+      "patch": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Updates a order status",
+        "description": "take order",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "GUID",
+            "description": "The Order Id Of specific order"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Order object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Invalid order id"
+          },
+          "406": {
+            "description": "Invalid request parameters"
+          },
+          "409": {
+            "description": "Already taken"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Orders": {
+      "type": "object",
+      "required": [
+        "origin",
+        "destination"
+      ],
+      "properties": {
+        "origin": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ObjectSchemaDefinition"
+          }
+        },
+        "destination": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ObjectSchemaDefinition"
+          }
+        }
+      }
+    },
+    "OrderUpdate": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Order status",
+          "enum": [
+            "TAKEN",
+            "UNASSIGNED"
+          ]
+        }
+      }
+    },
+    "ObjectSchemaDefinition": {
+      "type": "string"
+    }
+  }
+}
