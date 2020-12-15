@@ -20,10 +20,10 @@ build:
 	docker-compose exec php php artisan key:generate; \
 	#docker-compose exec php php artisan jwt:secret; \
 	docker-compose exec php php artisan migrate; \
-	docker-compose stop;
+	#docker-compose stop;\
 	# Seeds the database with DummyDataSeeder \
-	#docker-compose exec php php artisan db:seed; \
-	#docker-compose stop;
+	docker-compose exec php php artisan db:seed; \
+	docker-compose stop;
 
 build-source:
 	@echo No source to build.
