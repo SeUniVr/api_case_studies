@@ -1,7 +1,7 @@
 {
-  "database_host": "",
-  "database_port": "",
-  "database_name": "",
-  "database_username": "",
+  "database_host": "localhost",
+  "database_port": "3306",
+  "database_name": "rest_api_slim_php",
+  "database_username": "root",
   "database_password": ""
 }
