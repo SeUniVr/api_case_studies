@@ -27,8 +27,8 @@ build:
 
 build-source:
 	@echo Building the sources..
-	mvn clean
-	mvn package
+	./mvnw clean
+	./mvnw package
 	
 
 ########################################################
