@@ -27,8 +27,8 @@ build:
 
 build-source:
 	@echo Building the sources..
-	mvn clean
-	mvn package -Dmaven.test.skip=true #Skip the tests during packaging
+	./mvnw clean
+	./mvnw package -Dmaven.test.skip=true #Skip the tests during packaging
 	
 
 ########################################################
