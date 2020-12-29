@@ -5,22 +5,11 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ########################################################
-# The following command is used to build the containers
-# before the first execution
-
-build:
-	make clean
-
-	@echo Building the containers..
-	docker-compose build
-
-########################################################
 # The following command are used to build the containers
 # and the app before the first execution.
 
 build:
 	make clean
-	@echo Building the sources..
 
 	@echo Building the containers..
 	docker-compose build
@@ -30,7 +19,6 @@ build-source:
 	./mvnw clean
 	./mvnw package -Dmaven.test.skip=true #Skip the tests during packaging
 	
-
 ########################################################
 # The following command are used to start or stop the
 # containers when needed. These actions preserve the
@@ -56,20 +44,19 @@ stop:
 
 refresh:
 	@echo Rebuilding all the containers..
-	docker-compose down
-	docker-compose up -d --force-recreate
+	make refresh-app
+	make refresh-db
 
 refresh-app:
 	@echo Restoring the app to its original state..
-	make stop
+	docker-compose stop  webapp
 	docker-compose rm -f webapp
-	make start
+	docker-compose up -d webapp
 
 refresh-db:
 	@echo Restoring the database to its original state..
-	make stop
-	docker-compose rm -f mysql
-	make start
+	docker-compose exec mysql bash -c 'mysql -u root -ppetclinic < /docker-entrypoint-initdb.d/initDB.sql'
+	docker-compose exec mysql bash -c 'mysql -u root -ppetclinic -D petclinic < /docker-entrypoint-initdb.d/populateDB.sql'
 
 ########################################################
 # The following command is used to clean up all the 
@@ -78,7 +65,7 @@ refresh-db:
 
 clean:
 	@echo Cleaning up the application and removing the containers..
-	docker-compose down
+	docker-compose down --remove-orphans --volumes --rmi local
 
 ########################################################
 # The following command is used to get the swagger 

@@ -22,6 +22,8 @@
 ###### [Spring Boot example \#3 \(Pet Clinic\)](https://github.com/spring-petclinic/spring-petclinic-rest)
 **Specifica swagger valida**
 
+Makefile sistemato
+
 ###### [NodeJS example \#1](https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL)
 **Specifica swagger con errori strutturali**
 
@@ -42,11 +44,15 @@
 ###### [Go example \(Spa server\)](https://github.com/emrachid/widgets-spa-server)
 **Specifica swagger valida**
 
+Makefile sistemato
+
 ###### [NodeJS example \(TypeScript\) \#3](https://github.com/mateusconstanzo/express-typeorm-typescript)
 **Specifica swagger con errori semantici**
 
 ###### [Python example \#1](https://github.com/thomaxxl/safrs)
 **Specifica swagger valida**
+
+Makefile sistemato
 
 ###### [Medium.com clone](https://github.com/gothinkster/laravel-realworld-example-app)
 **Specifica swagger valida**

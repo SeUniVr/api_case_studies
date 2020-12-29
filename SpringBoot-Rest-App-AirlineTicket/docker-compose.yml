@@ -5,6 +5,8 @@ services:
     container_name: docker-mysql
     ports:
       - "3306:3306"
+    volumes:
+      - ./values_db.sql:/docker-entrypoint-initdb.d/values_db.sql
     environment:
       MYSQL_DATABASE: ticketdb
       MYSQL_ROOT_PASSWORD: root

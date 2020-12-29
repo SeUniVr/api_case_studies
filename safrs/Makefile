@@ -63,7 +63,7 @@ refresh-db:
 
 clean:
 	@echo Cleaning up the application and removing the containers..
-	docker-compose down
+	docker-compose down --remove-orphans --volumes --rmi local
 
 ########################################################
 # The following command is used to get the swagger 

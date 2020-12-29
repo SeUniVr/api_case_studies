@@ -18,6 +18,7 @@
 --
 -- Current Database: `spa`
 --
+DROP DATABASE IF EXISTS `spa`;
 
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `spa` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
