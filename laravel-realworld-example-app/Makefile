@@ -12,18 +12,18 @@ build:
 	make clean
 
 	@echo Building the containers..
+	cd ./docker; docker-compose build
 	docker run -v "`pwd`:/app" composer install
-	cd ./docker; \
-	docker-compose up -d; \
-	echo Waiting for the database to start.. ; \
-	sleep 60; \
-	docker-compose exec php php artisan key:generate; \
+	#docker-compose up -d; \
+	#echo Waiting for the database to start.. ; \
+	#sleep 60; \
+	#docker-compose exec php php artisan key:generate; \
 	#docker-compose exec php php artisan jwt:secret; \
-	docker-compose exec php php artisan migrate; \
+	#docker-compose exec php php artisan migrate; \
 	#docker-compose stop;\
 	# Seeds the database with DummyDataSeeder \
-	docker-compose exec php php artisan db:seed; \
-	docker-compose stop;
+	#docker-compose exec php php artisan db:seed; \
+	#docker-compose stop;
 
 build-source:
 	@echo No source to build.
@@ -58,32 +58,21 @@ stop:
 
 refresh:
 	@echo Rebuilding all the containers..
-	cd ./docker; \
-	docker-compose down; \
-	docker-compose up -d --build;
+	make refresh-app
+	make refresh-db
 
 refresh-app:
 	@echo Restoring the app to its original state..
-	make stop
 	cd ./docker; \
-	docker-compose rm -f php
-	docker-compose build php
-	#Start must be executed in the root folder
-	make start;
+	docker-compose stop php; \
+	docker-compose rm -f php; \
+	docker-compose build php; \
+	docker-compose up;
 
 refresh-db:
 	@echo Restoring the database to its original state..
-	make stop
 	cd ./docker; \
-	docker-compose rm -f mysql;
-	#Start must be executed in the root folder
-	make start
-	@echo Waiting for the database to start.. 
-	sleep 60
-	cd ./docker; \
-	docker-compose exec php php artisan migrate;
-	#docker-compose exec php php artisan db:seed;
-
+	docker-compose exec mysql bash -c 'mysql -u root -proot < /docker-entrypoint-initdb.d/refresh_data.sql'
 
 ########################################################
 # The following command is used to clean up all the 
@@ -93,8 +82,7 @@ refresh-db:
 clean:
 	@echo Cleaning up the application and removing the containers..
 	cd ./docker; \
-	pwd; \
-	docker-compose down
+	docker-compose down --remove-orphans --volumes --rmi local
 
 ########################################################
 # The following command is used to get the swagger 

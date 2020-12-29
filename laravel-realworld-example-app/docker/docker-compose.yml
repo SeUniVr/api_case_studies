@@ -15,7 +15,8 @@ services:
     ports:
       - 3360:3360
     volumes:
-      - ../database/mysql_native_password_init.sql:/docker-entrypoint-initdb.d/pwd_init.sql
+      - ../database/mysql_native_password_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../database/dump.sql:/docker-entrypoint-initdb.d/refresh_data.sql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: db
