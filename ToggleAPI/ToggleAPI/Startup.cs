@@ -172,7 +172,7 @@ namespace ToggleAPI
                 c.DocExpansion(DocExpansion.None);
             });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

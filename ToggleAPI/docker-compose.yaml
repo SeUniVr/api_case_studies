@@ -7,12 +7,14 @@ services:
       dockerfile: Dockerfile.app
     container_name: toggleApiApp
     ports:
-      - 8080:5001
-      - 8081:5000
+      - 8081:5001
+      - 8080:5000
 
   mysql:
     image: mysql:8.0.3
     container_name: toggleApiMysql
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
     ports:
       - 3306:3306
     environment:

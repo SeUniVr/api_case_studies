@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS rest_api_slim_php;
+CREATE DATABASE rest_api_slim_php;
+USE rest_api_slim_php;
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------

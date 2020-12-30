@@ -35,6 +35,10 @@ Makefile sistemato
 ###### [.Net example \(Toggle API\)](https://github.com/pdonatilio/ToggleAPI)
 **Specifica swagger valida**
 
+**Gira tutto su HTTPS e le richieste HTTP le redireziona su HTTPS. Modificata una singola riga nel sorgente(commentata) per evitarlo**
+
+Utilizza JWT token che rendono tutto non fattibile senza il token statico.
+
 ###### [Spring Boot example \#4 \(\)](https://github.com/medovuk/spring-boot-restful-api-example)
 **Specifica con un singolo errore semantico ed un warning. Sembra causato da qualche carattere codicicato male, quindi si può aggiustare (applicazione coreana)**
 
@@ -57,6 +61,7 @@ Makefile sistemato
 ###### [Medium.com clone](https://github.com/gothinkster/laravel-realworld-example-app)
 **Specifica swagger valida**
 
+Makefile sistemato
 
 ## Bugs:
 - Tutti i Makefile sono da sistemare (bisogna essere sicuri che venga fatto il rebuild e che vengano eliminate le immagini anche intermedie)

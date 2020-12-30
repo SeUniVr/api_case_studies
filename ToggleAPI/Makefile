@@ -43,33 +43,18 @@ stop:
 
 refresh:
 	@echo Rebuilding all the containers..
-	docker-compose down
-	docker-compose up -d --force-recreate
+	make refresh-app
+	make refresh-db
 
 refresh-app:
-	@echo Cannot refresh a single part
-	@echo Rebuilding all the containers..
-	make refresh
+	@echo Restoring the app to its original state..
+	docker-compose stop  webapp
+	docker-compose rm -f webapp
+	docker-compose up -d webapp
 
 refresh-db:
-	@echo Cannot refresh a single part
-	@echo Rebuilding all the containers..
-	make refresh
-
-# It is necessary to restart everything to refresh 
-# a part of the app
-#	refresh-app:
-#		@echo Restoring the app to its original state..
-#		make stop
-#		docker-compose rm -f webapp
-#		make start
-#	
-#	refresh-db:
-#		@echo Restoring the database to its original state..
-#		make stop
-#		docker-compose rm -f mysql
-#		make start
-#		docker-compose exec webapp "dotnet ef database update"
+	@echo Restoring the db to its original state..
+	docker-compose exec mysql bash -c 'mysql -u root -p123 < /docker-entrypoint-initdb.d/dump.sql'
 
 ########################################################
 # The following command is used to clean up all the 
@@ -78,7 +63,7 @@ refresh-db:
 
 clean:
 	@echo Cleaning up the application and removing the containers..
-	docker-compose down
+	docker-compose down --remove-orphans --volumes --rmi local
 
 ########################################################
 # The following command is used to get the swagger 
