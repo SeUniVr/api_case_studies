@@ -13,11 +13,17 @@
 ###### [PHP Slim example](https://github.com/maurobonfietti/rest-api-slim-php)
 **Specifica swagger valida**
 
+Makefile sistemato
+
 ###### [Spring Boot example \#1 \(Airline Ticket\)](https://github.com/erhanhepyasar/SpringBoot-Rest-App-AirlineTicket)
 **Specifica con errori semantici (credo si possa sistemare)**
 
+Specifica sistemata, Makefile sistemato
+
 ###### [Spring Boot example \#2 \(Live Streaming\)](https://github.com/attacomsian/live-streaming)
 **Specifica swagger valida**
+
+Makefile sistemato, Servizio fragilissimo e un po' strano
 
 ###### [Spring Boot example \#3 \(Pet Clinic\)](https://github.com/spring-petclinic/spring-petclinic-rest)
 **Specifica swagger valida**

@@ -1,4 +1,6 @@
 #switch to newly created database
+DROP DATABASE IF EXISTS `live-streaming`;
+CREATE DATABASE `live-streaming`;
 USE live-streaming;
 
 #create users table
@@ -27,15 +29,15 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO users VALUES
-(10, 'letizia', 'letizia', NULL, NULL),
-(11, 'plinio', 'plinio', NULL, NULL),
-(12, 'senzio', NULL, NULL, NULL),
-(13, 'tarquizio', NULL, NULL, NULL),
-(14, 'calliope', 'calliope', NULL, NULL);
+(10, 'letizia', 'letizia', NOW(), NOW()),
+(11, 'plinio', 'plinio', NOW(), NOW()),
+(12, 'senzio', 'senziosenzio', NOW(), NOW()),
+(13, 'tarquizio', 'tarquiziotarquizio', NOW(), NOW()),
+(14, 'calliope', 'calliope', NOW(), NOW());
 
 INSERT INTO videos VALUES
-(10, 10, 'Kill Will', 2.5, NULL, NULL, NULL),
-(11, 10, 'Kill Will 2', 4.5, 'kill_will_2_url', NULL, NULL),
-(12, 13, 'Kill Will 3', 3.5, NULL, NULL, NULL),
-(13, 13, 'Kill Will 4', 2.6, NULL, NULL, NULL),
-(14, 12, 'Kill Will 5', 110.0, NULL, NULL, NULL)
+(10, 10, 'Kill Will', 2.5, 'url', NOW(), NOW()),
+(11, 10, 'Kill Will 2', 4.5, 'kill_will_2_url', NOW(), NOW()),
+(12, 13, 'Kill Will 3', 3.5, 'another_url', NOW(), NOW()),
+(13, 13, 'Kill Will 4', 2.6, 'uuurrrlll', NOW(), NOW()),
+(14, 12, 'Kill Will 5', 110.0, 'urlll', NOW(), NOW());
