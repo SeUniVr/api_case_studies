@@ -6,7 +6,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./values_db.sql:/docker-entrypoint-initdb.d/values_db.sql
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
     environment:
       MYSQL_DATABASE: ticketdb
       MYSQL_ROOT_PASSWORD: root
