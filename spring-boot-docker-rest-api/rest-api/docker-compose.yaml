@@ -5,7 +5,7 @@ services:
     image: mysql:latest
     container_name: sbdra-mysql
     volumes:
-      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/initdb.sql
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sbdra-db

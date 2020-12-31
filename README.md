@@ -1,15 +1,5 @@
 # API case studies
 
-###### [OrderAPI](https://github.com/jainsiddharth21/OrderAPI)
-**Specifica swagger con errori strutturali**
-- https://stackoverflow.com/questions/36765391/php-permissions-to-create-a-file
-
-- https://stackoverflow.com/questions/9200557/permission-denied-when-opening-or-creating-files-with-php
-
-- https://stackoverflow.com/questions/13101820/nginx-php-fastcgi-unable-to-write-permission-denied-even-using-his-own-permiss
-
-- con chmod 777 su tutte le directory sembra cambiare la situazione, ma ha problemi di accesso al DB (connection refused).
-
 ###### [PHP Slim example](https://github.com/maurobonfietti/rest-api-slim-php)
 **Specifica swagger valida**
 
@@ -30,14 +20,6 @@ Makefile sistemato, Servizio fragilissimo e un po' strano
 
 Makefile sistemato
 
-###### [NodeJS example \#1](https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL)
-**Specifica swagger con errori strutturali**
-
-- Makefile di CRUD ha due volte il target build
-
-###### [NodeJS example \#2](https://github.com/carlos-illobre/node-express-swagger-docker-sequelizer)
-**Specifica disastrosa. Bisogna ancora estrarla bene, ma è piena di errori strutturali e semantici**
-
 ###### [.Net example \(Toggle API\)](https://github.com/pdonatilio/ToggleAPI)
 **Specifica swagger valida**
 
@@ -45,19 +27,20 @@ Makefile sistemato
 
 Utilizza JWT token che rendono tutto non fattibile senza il token statico.
 
-###### [Spring Boot example \#4 \(\)](https://github.com/medovuk/spring-boot-restful-api-example)
+###### [Spring Boot example \#4 \(Problems\)](https://github.com/medovuk/spring-boot-restful-api-example)
 **Specifica con un singolo errore semantico ed un warning. Sembra causato da qualche carattere codicicato male, quindi si può aggiustare (applicazione coreana)**
 
-###### [Spring Boot example \#5 \(\)](https://github.com/abhishek70/spring-boot-docker-rest-api)
+Specifica sistemata, Makefile sistemato
+
+###### [Spring Boot example \#5 \(Products\)](https://github.com/abhishek70/spring-boot-docker-rest-api)
 **Specifica swagger con errori strutturali e semantici**
+
+Specifica sistemata, Makefile sistemato
 
 ###### [Go example \(Spa server\)](https://github.com/emrachid/widgets-spa-server)
 **Specifica swagger valida**
 
 Makefile sistemato
-
-###### [NodeJS example \(TypeScript\) \#3](https://github.com/mateusconstanzo/express-typeorm-typescript)
-**Specifica swagger con errori semantici**
 
 ###### [Python example \#1](https://github.com/thomaxxl/safrs)
 **Specifica swagger valida**
@@ -68,6 +51,31 @@ Makefile sistemato
 **Specifica swagger valida**
 
 Makefile sistemato
+
+###### [OrderAPI](https://github.com/jainsiddharth21/OrderAPI)
+**Specifica swagger con errori strutturali**
+- https://stackoverflow.com/questions/36765391/php-permissions-to-create-a-file
+
+- https://stackoverflow.com/questions/9200557/permission-denied-when-opening-or-creating-files-with-php
+
+- https://stackoverflow.com/questions/13101820/nginx-php-fastcgi-unable-to-write-permission-denied-even-using-his-own-permiss
+
+- con chmod 777 su tutte le directory sembra cambiare la situazione, ma ha problemi di accesso al DB (connection refused).
+
+
+###### [NodeJS example \#1](https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL)
+**Specifica swagger con errori strutturali**
+
+- Makefile di CRUD ha due volte il target build
+
+###### [NodeJS example \#2](https://github.com/carlos-illobre/node-express-swagger-docker-sequelizer)
+**Specifica disastrosa. Bisogna ancora estrarla bene, ma è piena di errori strutturali e semantici**
+
+
+
+###### [NodeJS example \(TypeScript\) \#3](https://github.com/mateusconstanzo/express-typeorm-typescript)
+**Specifica swagger con errori semantici**
+
 
 ## Bugs:
 - Tutti i Makefile sono da sistemare (bisogna essere sicuri che venga fatto il rebuild e che vengano eliminate le immagini anche intermedie)
