@@ -5,17 +5,7 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 ########################################################
-# The following command is used to build the containers
-# before the first execution
-
-build:
-	make clean
-
-	@echo Building the containers..
-	docker-compose build
-
-########################################################
-# The following command are used to build the containers
+# The following commands are used to build the containers
 # and the app before the first execution.
 
 build:
@@ -27,8 +17,8 @@ build:
 
 build-source:
 	@echo Building the sources..
-	mvn clean
-	mvn package -Dmaven.test.skip=true #Skip the tests during packaging
+	./mvnw clean
+	./mvnw package -Dmaven.test.skip=true #Skip the tests during packaging
 	
 
 ########################################################
@@ -56,20 +46,19 @@ stop:
 
 refresh:
 	@echo Rebuilding all the containers..
-	docker-compose down
-	docker-compose up -d --force-recreate
+	make refresh-app
+	make refresh-db
 
 refresh-app:
 	@echo Restoring the app to its original state..
-	make stop
+	docker-compose stop  webapp
 	docker-compose rm -f webapp
+	docker-compose up -d webapp
 	make start
 
 refresh-db:
 	@echo Restoring the database to its original state..
-	make stop
-	docker-compose rm -f mysql
-	make start
+	docker-compose exec mysql bash -c 'mysql -u root -proot < /docker-entrypoint-initdb.d/initdb.sql'
 
 ########################################################
 # The following command is used to clean up all the 
@@ -78,7 +67,7 @@ refresh-db:
 
 clean:
 	@echo Cleaning up the application and removing the containers..
-	docker-compose down
+	docker-compose down --remove-orphans --volumes --rmi local
 
 ########################################################
 # The following command is used to get the swagger 
