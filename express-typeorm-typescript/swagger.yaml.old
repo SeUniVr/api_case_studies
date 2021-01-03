@@ -61,7 +61,7 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: userId
+        - name: departmentId
           in: path
           description: ID of user to return
           required: true

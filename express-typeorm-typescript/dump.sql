@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: api
 -- ------------------------------------------------------
--- Server version 8.0.22
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,14 +14,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-ALTER USER 'user' IDENTIFIED WITH mysql_native_password BY 'password';
-flush privileges;
-
-DROP DATABASE IF EXISTS api;
-CREATE DATABASE api;
-USE api;
-
 
 --
 -- Table structure for table `user`
@@ -45,12 +37,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'firstuser','password',0),
-(2,'secondUser','password',1),
-(3,'AnotherUser','password2',1),
-(4,'Useeer','password2',1),
-(5,'username12','password2',0),
-(6,'lastuser','pwdpwdpwd',1);
+INSERT INTO `user` VALUES (1,'firstuser','password',0),(2,'secondUser','password',1),(3,'AnotherUser','password2',1),(4,'Useeer','password2',1),(5,'username12','password2',0),(6,'lastuser','pwdpwdpwd',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -64,38 +51,3 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-01-03 14:13:05
-
-
-delimiter //
-
-CREATE TRIGGER user_username_len_trigger BEFORE INSERT ON user FOR EACH ROW 
-BEGIN
-
-   DECLARE usernameLen INT;
-   SET usernameLen = (SELECT LENGTH(NEW.username));
-
-   IF (usernameLen < 1) THEN
-     SIGNAL SQLSTATE '45000'
-            SET message_text = 'Username too short.';
-   END IF;
-
-END; //
-
-delimiter ;
-
-delimiter //
-
-CREATE TRIGGER user_password_len_trigger BEFORE INSERT ON user FOR EACH ROW 
-BEGIN
-
-   DECLARE pwdLen INT;
-   SET pwdLen = (SELECT LENGTH(NEW.password));
-
-   IF (pwdLen < 1) THEN
-     SIGNAL SQLSTATE '45000'
-            SET message_text = 'Password too short.';
-   END IF;
-
-END;//
-
-delimiter ;

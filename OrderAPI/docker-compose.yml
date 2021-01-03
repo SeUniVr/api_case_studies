@@ -45,6 +45,8 @@ services:
             MYSQL_ROOT_PASSWORD: "pass@12345"
             MYSQL_DATABASE: "packageorders"
         restart: on-failure
+        volumes:
+            - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
 
 #Composer Service
     composer:

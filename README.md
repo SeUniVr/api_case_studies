@@ -52,6 +52,18 @@ Makefile sistemato
 
 Makefile sistemato
 
+###### [NodeJS example \(TypeScript\) \#3](https://github.com/mateusconstanzo/express-typeorm-typescript)
+**Specifica swagger con errori semantici**
+
+Bisogna farlo partire 2 volte, è buggato. Però quando parte la seconda volta funziona.
+
+Makefile sistemato, specifica sistemata
+
+###### [NodeJS example \#1](https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL)
+**Specifica swagger con errori strutturali**
+
+Makefile sistemato, Specifica sistemata
+
 ###### [OrderAPI](https://github.com/jainsiddharth21/OrderAPI)
 **Specifica swagger con errori strutturali**
 - https://stackoverflow.com/questions/36765391/php-permissions-to-create-a-file
@@ -63,18 +75,8 @@ Makefile sistemato
 - con chmod 777 su tutte le directory sembra cambiare la situazione, ma ha problemi di accesso al DB (connection refused).
 
 
-###### [NodeJS example \#1](https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL)
-**Specifica swagger con errori strutturali**
-
-- Makefile di CRUD ha due volte il target build
-
 ###### [NodeJS example \#2](https://github.com/carlos-illobre/node-express-swagger-docker-sequelizer)
 **Specifica disastrosa. Bisogna ancora estrarla bene, ma è piena di errori strutturali e semantici**
-
-
-
-###### [NodeJS example \(TypeScript\) \#3](https://github.com/mateusconstanzo/express-typeorm-typescript)
-**Specifica swagger con errori semantici**
 
 
 ## Bugs:

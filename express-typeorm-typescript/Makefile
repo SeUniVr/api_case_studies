@@ -13,7 +13,6 @@ build:
 
 	@echo Building the containers..
 	docker-compose build
-	#docker-compose run --no-deps api bash -c "npm install -g --legacy-peer-deps"
 
 build-source:
 	@echo No source to build.
@@ -43,20 +42,18 @@ stop:
 
 refresh:
 	@echo Rebuilding all the containers..
-	docker-compose down
-	docker-compose up -d --force-recreate
+	make refresh-app
+	make refresh-db
 
 refresh-app:
 	@echo Restoring the app to its original state..
-	make stop
+	docker-compose stop  api
 	docker-compose rm -f api
-	make start
+	docker-compose up -d api
 
 refresh-db:
 	@echo Restoring the database to its original state..
-	make stop
-	docker-compose rm -f mysql
-	make start
+	docker-compose exec mysql bash -c 'mysql -u root -proot < /docker-entrypoint-initdb.d/initDB.sql'
 
 ########################################################
 # The following command is used to clean up all the 
@@ -65,7 +62,7 @@ refresh-db:
 
 clean:
 	@echo Cleaning up the application and removing the containers..
-	docker-compose down
+	docker-compose down --remove-orphans --volumes --rmi local
 
 ########################################################
 # The following command is used to get the swagger 
@@ -75,6 +72,6 @@ clean:
 get-swagger-spec:
 	@echo Getting swagger speciication..
 	@echo Found in src folder.
-	curl cp ./src/swagger.yaml ./swagger-specification.json
+	curl cp ./src/swagger.json ./swagger-specification.json
 	@echo Done.
 	cat ./swagger-specification.json

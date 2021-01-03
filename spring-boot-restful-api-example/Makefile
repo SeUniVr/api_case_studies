@@ -54,7 +54,6 @@ refresh-app:
 	docker-compose stop  webapp
 	docker-compose rm -f webapp
 	docker-compose up -d webapp
-	make start
 
 refresh-db:
 	@echo Restoring the database to its original state..
