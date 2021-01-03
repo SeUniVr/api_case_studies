@@ -20,6 +20,6 @@ services:
     ports:
       - "8080:3000"
     environment:
-      MYSQL_HOST: mysql-petclinic
+      MYSQL_HOST: mysql-crud
       MYSQL_DATABASE: crud
       MYSQL_ROOT_PASSWORD: root

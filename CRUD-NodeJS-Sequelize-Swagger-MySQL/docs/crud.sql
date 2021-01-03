@@ -62,5 +62,15 @@ USE `crud`;
 INSERT INTO `crud`.`profiles` (`profile_id`, `name`) VALUES (1, 'ADMIN');
 INSERT INTO `crud`.`profiles` (`profile_id`, `name`) VALUES (2, 'CLIENT');
 
+INSERT INTO `users` VALUES 
+(2,1,'Andrea',1),
+(3,2,'Lucio',0),
+(4,2,'Domingo',1),
+(5,1,'Pablo',0),
+(6,1,'Almunda',1),
+(7,1,'Consuelo',1),
+(8,2,'Vega',0);
+
+
 COMMIT;
 
