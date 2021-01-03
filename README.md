@@ -66,14 +66,10 @@ Makefile sistemato, Specifica sistemata
 
 ###### [OrderAPI](https://github.com/jainsiddharth21/OrderAPI)
 **Specifica swagger con errori strutturali**
-- https://stackoverflow.com/questions/36765391/php-permissions-to-create-a-file
 
-- https://stackoverflow.com/questions/9200557/permission-denied-when-opening-or-creating-files-with-php
+**Attenzione! Il src/.env contiene la API key di Davide, bisogna disattivarla prima di rendere tutto pubblico**
 
-- https://stackoverflow.com/questions/13101820/nginx-php-fastcgi-unable-to-write-permission-denied-even-using-his-own-permiss
-
-- con chmod 777 su tutte le directory sembra cambiare la situazione, ma ha problemi di accesso al DB (connection refused).
-
+Makefile sistemato, Specifica sistemata
 
 ###### [NodeJS example \#2](https://github.com/carlos-illobre/node-express-swagger-docker-sequelizer)
 **Specifica disastrosa. Bisogna ancora estrarla bene, ma è piena di errori strutturali e semantici**

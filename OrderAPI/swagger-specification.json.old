@@ -12,8 +12,8 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "localhost:8080",
-  "basePath": "/",
+  "host": "",
+  "basePath": "",
   "tags": [
     {
       "name": "Orders",
@@ -23,7 +23,7 @@
   "schemes": [
     "http"
   ],
-  "paths": {
+  "paths": {    
     "/orders": {
       "post": {
         "tags": [
@@ -74,16 +74,14 @@
             "name": "page",
             "description": "Current Page No.",
             "required": true,
-            "default": 1,
-            "type": "integer"
+            "default":1            
           },
           {
             "in": "query",
             "name": "limit",
             "description": "No. of items to be return",
             "required": true,
-            "default": 5,
-            "type": "integer"
+            "default":5            
           }
         ],
         "responses": {
@@ -129,14 +127,14 @@
           "200": {
             "description": "Success"
           },
-          "404": {
-            "description": "Invalid order id"
-          },
           "406": {
             "description": "Invalid request parameters"
           },
           "409": {
             "description": "Already taken"
+          },
+          "404": {
+            "description": "Invalid order id"
           }
         }
       }
