@@ -5,6 +5,5 @@ WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN ["npm", "install"]
-
-ENTRYPOINT ["npm", "start"]
+CMD ["npm", "install"]
+CMD ["npm", "start"]

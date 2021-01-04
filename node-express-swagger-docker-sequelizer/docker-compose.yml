@@ -13,6 +13,7 @@ services:
       JWT_EXPIRES_IN: '${JWT_EXPIRES_IN}'
     ports:
       - '8080:8080'
+    restart: unless-stopped
     depends_on:
       - mysql
     volumes:
@@ -28,5 +29,6 @@ services:
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
     volumes:
       - mysql:/var/lib/mysql
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
 volumes:
   mysql:

@@ -13,6 +13,10 @@ build:
 
 	@echo Building the containers..
 	docker-compose build
+	@echo Setting up last things..
+	docker-compose up -d api
+	sleep 10
+	docker-compose stop
 
 build-source:
 	@echo No source to build.

@@ -1,55 +1,80 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
-    "version": "1.0.0",
     "title": "Swagger CRUD",
     "description": "Swagger CRUD description",
-    "termsOfService": "http://swagger.io/terms/"
+    "termsOfService": "http://swagger.io/terms/",
+    "version": "1.0.0"
   },
-  "basePath": "/",
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
   "tags": [
     {
       "name": "Users",
       "description": "User actions"
     }
   ],
-  "schemes": [
-    "http",
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
   "paths": {
     "/api/v1/users": {
-      "post": {
+      "get": {
         "tags": [
           "Users"
         ],
-        "description": "Create user",
-        "produces": [
-          "application/json"
-        ],
+        "description": "List users",
         "parameters": [
           {
-            "name": "vm",
-            "in": "body",
+            "name": "user_id",
+            "in": "query",
+            "description": "User ID",
             "schema": {
-              "$ref": "#/definitions/post_user"
-            }
+              "type": "number"
+            },
+            "example": 1
+          },
+          {
+            "name": "profile_id",
+            "in": "query",
+            "description": "Profile ID (1 = ADMIN, 2 = CLIENT)",
+            "schema": {
+              "type": "number"
+            },
+            "example": 1
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "User name",
+            "schema": {
+              "type": "string"
+            },
+            "example": "LUCIANO"
+          },
+          {
+            "name": "is_active",
+            "in": "query",
+            "description": "Is the user active?",
+            "schema": {
+              "type": "boolean"
+            },
+            "example": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {}
           },
           "400": {
             "description": "Business Exception",
-            "schema": {
-              "$ref": "#/definitions/business_exception"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business_exception"
+                }
+              }
             }
           }
         }
@@ -59,185 +84,183 @@
           "Users"
         ],
         "description": "Update user",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "vm",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/put_user"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/put_user"
+              }
             }
-          }
-        ],
+          },
+          "required": false
+        },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {}
           },
           "400": {
             "description": "Business Exception",
-            "schema": {
-              "$ref": "#/definitions/business_exception"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business_exception"
+                }
+              }
             }
           }
-        }
+        },
+        "x-codegen-request-body-name": "vm"
       },
-      "get": {
+      "post": {
         "tags": [
           "Users"
         ],
-        "description": "List users",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "query",
-            "type": "number",
-            "description": "User ID"
+        "description": "Create user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/post_user"
+              }
+            }
           },
-          {
-            "name": "profile_id",
-            "in": "query",
-            "type": "number",
-            "description": "Profile ID (1 = ADMIN, 2 = CLIENT)"
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "type": "string",
-            "description": "User name"
-          },
-          {
-            "name": "is_active",
-            "in": "query",
-            "type": "boolean",
-            "description": "Is the user active?"
-          }
-        ],
+          "required": false
+        },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {}
           },
           "400": {
             "description": "Business Exception",
-            "schema": {
-              "$ref": "#/definitions/business_exception"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business_exception"
+                }
+              }
             }
           }
-        }
+        },
+        "x-codegen-request-body-name": "vm"
       },
       "delete": {
         "tags": [
           "Users"
         ],
         "description": "Delete user",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "user_id",
             "in": "query",
+            "description": "User ID",
             "required": true,
-            "type": "number",
-            "description": "User ID"
+            "schema": {
+              "type": "number"
+            },
+            "example": 1
           }
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {}
           },
           "400": {
             "description": "Business Exception",
-            "schema": {
-              "$ref": "#/definitions/business_exception"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business_exception"
+                }
+              }
             }
           }
         }
       }
     }
   },
-  "definitions": {
-    "user_id": {
-      "type": "number",
-      "description": "User ID",
-      "example": 1
-    },
-    "profile_id": {
-      "type": "number",
-      "description": "Profile ID (1 = ADMIN, 2 = CLIENT)",
-      "example": 1
-    },
-    "name": {
-      "type": "string",
-      "description": "User name",
-      "example": "LUCIANO"
-    },
-    "is_active": {
-      "type": "boolean",
-      "description": "Is the user active?",
-      "example": true
-    },
-    "error": {
-      "type": "object",
-      "description": "Error data",
-      "properties": {
-        "msg": {
-          "type": "string",
-          "description": "Error message",
-          "example": "User not found"
+  "components": {
+    "schemas": {
+      "user_id": {
+        "type": "number",
+        "description": "User ID",
+        "example": 1
+      },
+      "profile_id": {
+        "type": "number",
+        "description": "Profile ID (1 = ADMIN, 2 = CLIENT)",
+        "example": 1
+      },
+      "name": {
+        "type": "string",
+        "description": "User name",
+        "example": "LUCIANO"
+      },
+      "is_active": {
+        "type": "boolean",
+        "description": "Is the user active?",
+        "example": true
+      },
+      "error": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string",
+            "description": "Error message",
+            "example": "User not found"
+          }
+        },
+        "description": "Error data"
+      },
+      "business_exception": {
+        "type": "array",
+        "description": "Error array",
+        "items": {
+          "$ref": "#/components/schemas/error"
         }
-      }
-    },
-    "business_exception": {
-      "type": "array",
-      "description": "Error array",
-      "items": {
-        "$ref": "#/definitions/error"
-      }
-    },
-    "post_user": {
-      "type": "object",
-      "required": [
-        "profile_id",
-        "name",
-        "is_active"
-      ],
-      "properties": {
-        "profile_id": {
-          "$ref": "#/definitions/profile_id"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "is_active": {
-          "$ref": "#/definitions/is_active"
+      },
+      "post_user": {
+        "required": [
+          "is_active",
+          "name",
+          "profile_id"
+        ],
+        "type": "object",
+        "properties": {
+          "profile_id": {
+            "$ref": "#/components/schemas/profile_id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/name"
+          },
+          "is_active": {
+            "$ref": "#/components/schemas/is_active"
+          }
         }
-      }
-    },
-    "put_user": {
-      "type": "object",
-      "required": [
-        "user_id",
-        "profile_id",
-        "name",
-        "is_active"
-      ],
-      "properties": {
-        "user_id": {
-          "$ref": "#/definitions/user_id"
-        },
-        "profile_id": {
-          "$ref": "#/definitions/profile_id"
-        },
-        "name": {
-          "$ref": "#/definitions/name"
-        },
-        "is_active": {
-          "$ref": "#/definitions/is_active"
+      },
+      "put_user": {
+        "required": [
+          "is_active",
+          "name",
+          "profile_id",
+          "user_id"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "$ref": "#/components/schemas/user_id"
+          },
+          "profile_id": {
+            "$ref": "#/components/schemas/profile_id"
+          },
+          "name": {
+            "$ref": "#/components/schemas/name"
+          },
+          "is_active": {
+            "$ref": "#/components/schemas/is_active"
+          }
         }
       }
     }

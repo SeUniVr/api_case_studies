@@ -55,9 +55,9 @@ Makefile sistemato
 ###### [NodeJS example \(TypeScript\) \#3](https://github.com/mateusconstanzo/express-typeorm-typescript)
 **Specifica swagger con errori semantici**
 
-Bisogna farlo partire 2 volte, è buggato. Però quando parte la seconda volta funziona.
-
 Makefile sistemato, specifica sistemata
+
+Bisognava farlo partire 2 volte. Però quando parte la seconda volta funziona. Adottata soluzione 'provvisoria' per farlo funzionare comunque con la solita sequenza di comandi.
 
 ###### [NodeJS example \#1](https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL)
 **Specifica swagger con errori strutturali**
@@ -73,6 +73,8 @@ Makefile sistemato, Specifica sistemata
 
 ###### [NodeJS example \#2](https://github.com/carlos-illobre/node-express-swagger-docker-sequelizer)
 **Specifica disastrosa. Bisogna ancora estrarla bene, ma è piena di errori strutturali e semantici**
+
+Specifica sistemata, Makefile sistemato.
 
 
 ## Bugs:
