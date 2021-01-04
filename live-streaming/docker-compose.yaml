@@ -5,7 +5,7 @@ services:
     image: mysql:latest
     container_name: streaming-mysql
     ports:
-      - "6033:3306"
+      - "3306:3306"
     volumes:
       - ./mysql_init/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
