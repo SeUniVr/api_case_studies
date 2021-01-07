@@ -305,7 +305,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /api/v1/users/8:
+  /api/v1/users/{id}:
     get:
       tags:
       - Users
@@ -320,13 +320,18 @@ paths:
         schema:
           type: string
           example: '{{jwt}}'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       responses:
         200:
           description: ''
           headers: {}
       deprecated: false
       security: []
-  /api/v1/users/9:
+
     put:
       tags:
       - Users
@@ -342,6 +347,11 @@ paths:
         schema:
           type: string
           example: '{{jwt}}'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       requestBody:
         description: ''
         content:
@@ -359,7 +369,7 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /api/v1/users/112:
+  
     delete:
       tags:
       - Users
@@ -375,6 +385,11 @@ paths:
         schema:
           type: string
           example: '{{jwt}}'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       responses:
         200:
           description: ''
@@ -479,7 +494,7 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /api/v1/tasks/13:
+  /api/v1/tasks/{id}:
     get:
       tags:
       - Tasks
@@ -495,13 +510,18 @@ paths:
         schema:
           type: string
           example: '{{jwt}}'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       responses:
         200:
           description: ''
           headers: {}
       deprecated: false
       security: []
-  /api/v1/tasks/29:
+
     put:
       tags:
       - Tasks
@@ -517,6 +537,11 @@ paths:
         schema:
           type: string
           example: '{{jwt}}'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       requestBody:
         description: ''
         content:
@@ -534,6 +559,7 @@ paths:
           headers: {}
       deprecated: false
       security: []
+      
     delete:
       tags:
       - Tasks
@@ -549,6 +575,11 @@ paths:
         schema:
           type: string
           example: '{{jwt}}'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       responses:
         200:
           description: ''
@@ -624,25 +655,35 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /api/v1/notes/3:
+  /api/v1/notes/{id}:
     get:
       tags:
       - Notes
       summary: Get One Note
       operationId: GetOneNote
-      parameters: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       responses:
         200:
           description: ''
           headers: {}
       deprecated: false
-  /api/v1/notes/4:
+  
     put:
       tags:
       - Notes
       summary: Update Note
       operationId: UpdateNote
-      parameters: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       requestBody:
         description: ''
         content:
@@ -658,13 +699,18 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /api/v1/notes/22:
+  
     delete:
       tags:
       - Notes
       summary: Delete Note
       operationId: DeleteNote
-      parameters: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
       responses:
         200:
           description: ''
