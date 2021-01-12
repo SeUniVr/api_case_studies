@@ -3,7 +3,7 @@
     "title":"Api Documentation",
     "version":"1.0.0"
   },
-  "host" : "localhost:9090",
+  "host" : "localhost:8080",
   "basePath": "/api",
   "swagger": "2.0",
   "paths": {
