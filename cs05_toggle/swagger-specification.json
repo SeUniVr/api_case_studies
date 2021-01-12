@@ -1,1 +1,689 @@
-{"swagger":"2.0","info":{"version":"v1","title":"Toggle API","description":"A simple example ASP.NET Core 2.1 Web API","contact":{"name":"Paulo Donatilio","url":"https://www.linkedin.com/in/pdonatilio/","email":"pdonatilio@gmail.com"},"license":{"name":"Use under Gnu GPL","url":"https://www.gnu.org/licenses/gpl-3.0.pt-br.html"}},"paths":{"/api/Service":{"get":{"tags":["Service"],"summary":"Get all services.","description":"Sample request:\r\n            \r\n    GET api/Service/","operationId":"ApiServiceGet","consumes":[],"produces":[],"parameters":[],"responses":{"200":{"description":"Returns a list with all services"},"401":{"description":"Unauthorized Access"}}},"post":{"tags":["Service"],"summary":"Create a New Service","description":"Sample request:\r\n            \r\n    POST api/Service/\r\n    \r\n    {\r\n        \"version\": int,\r\n        \"Name\": \"string\"\r\n    }","operationId":"ApiServicePost","consumes":["application/json-patch+json","application/json","text/json","application/*+json"],"produces":[],"parameters":[{"name":"serviceDto","in":"body","required":false,"schema":{"$ref":"#/definitions/ServiceDto"}}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If version or name is null"}}}},"/api/Service/{id}":{"get":{"tags":["Service"],"summary":"Get a specific Service by id.","description":"Sample request:\r\n            \r\n    GET api/Service/{id}","operationId":"ApiServiceByIdGet","consumes":[],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"}],"responses":{"200":{"description":"Returns the service informed by Id"},"400":{"description":"If id is null or not found"},"401":{"description":"Unauthorized Access"}}},"put":{"tags":["Service"],"summary":"Update the service informed by Id","description":"Sample request:\r\n            \r\n    PUT api/Service/\r\n    \r\n    {\r\n        \"version\": int,\r\n        \"name\": \"string\"\r\n    }","operationId":"ApiServiceByIdPut","consumes":["application/json-patch+json","application/json","text/json","application/*+json"],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"},{"name":"serviceDto","in":"body","description":"","required":false,"schema":{"$ref":"#/definitions/ServiceDto"}}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If the version or name is null"}}},"delete":{"tags":["Service"],"summary":"Delet a specific service by id.","description":"Sample request:\r\n            \r\n    DELETE api/Service/{id}","operationId":"ApiServiceByIdDelete","consumes":[],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If id is null or not found"},"401":{"description":"Unauthorized Access"}}}},"/api/Service/toggles/{id}":{"get":{"tags":["Service"],"summary":"Get all Toggles from a specific service by id.","description":"Sample request:\r\n            \r\n    GET api/Service/toggles/{id}","operationId":"ApiServiceTogglesByIdGet","consumes":[],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"}],"responses":{"200":{"description":"Return a list with all Toggles and the most important one of they"},"400":{"description":"If id is null or not found"},"401":{"description":"Unauthorized Access"}}}},"/api/Toggle":{"get":{"tags":["Toggle"],"summary":"Get all toggles.","description":"Sample request:\r\n            \r\n    GET api/Toggle/","operationId":"ApiToggleGet","consumes":[],"produces":[],"parameters":[],"responses":{"200":{"description":"Returns a list with all toggles"},"401":{"description":"Unauthorized Access"}}},"post":{"tags":["Toggle"],"summary":"Create a New Toggle","description":"Sample request:\r\n            \r\n    POST api/Toggle/\r\n    \r\n    To include All Services\r\n    {\r\n    \t\"Name\": \"string\",\r\n    \t\"State\": bolean,\r\n    \t\"Value\": int,\r\n    \t\"ServicesList\": [ \"All\" ]\r\n    }\r\n            \r\n    To include The Services 1,2,3 (By Id)\r\n    {\r\n    \t\"Name\": \"string\",\r\n    \t\"State\": bolean,\r\n    \t\"Value\": int,\r\n    \t\"ServicesList\": [ 1,2,3 ]\r\n    }","operationId":"ApiTogglePost","consumes":["application/json-patch+json","application/json","text/json","application/*+json"],"produces":[],"parameters":[{"name":"toggleDto","in":"body","required":false,"schema":{"$ref":"#/definitions/SavingToggleDto"}}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If the fields name or ServicesList are null."}}}},"/api/Toggle/{id}":{"get":{"tags":["Toggle"],"summary":"Get a specific Toggle by id.","description":"Sample request:\r\n            \r\n    GET api/Toggle/{id}","operationId":"ApiToggleByIdGet","consumes":[],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"}],"responses":{"200":{"description":"Returns the toggle informed by Id"},"400":{"description":"If id is null or not found"},"401":{"description":"Unauthorized Access"}}},"put":{"tags":["Toggle"],"summary":"Update the toggle informed by Id","description":"Sample request:\r\n            \r\n    PUT api/Toggle/\r\n    \r\n    {\r\n        \"version\": int,\r\n        \"name\": \"string\"\r\n    }","operationId":"ApiToggleByIdPut","consumes":["application/json-patch+json","application/json","text/json","application/*+json"],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"},{"name":"toggleDto","in":"body","description":"","required":false,"schema":{"$ref":"#/definitions/ToggleDto"}}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If the version or name is null"}}}},"/api/User":{"get":{"tags":["User"],"summary":"Get all users.","description":"Sample request:\r\n            \r\n    GET api/User/{id}","operationId":"ApiUserGet","consumes":[],"produces":[],"parameters":[],"responses":{"200":{"description":"Sucess"},"401":{"description":"Unauthorized Access"}}},"post":{"tags":["User"],"summary":"Create a New user","description":"Sample request:\r\n            \r\n    POST api/User/\r\n    \r\n    {\r\n        \"firstName\": \"string\",\r\n        \"lastName\": \"string\",\r\n        \"username\": \"string\",\r\n        \"password\": \"string\",\r\n    }","operationId":"ApiUserPost","consumes":["application/json-patch+json","application/json","text/json","application/*+json"],"produces":[],"parameters":[{"name":"userDto","in":"body","required":false,"schema":{"$ref":"#/definitions/UserDto"}}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If username exists or password is null"}}}},"/api/User/{id}":{"get":{"tags":["User"],"summary":"Get a specific user by id.","description":"Sample request:\r\n            \r\n    GET api/User/{id}","operationId":"ApiUserByIdGet","consumes":[],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"}],"responses":{"200":{"description":"Returns the user informed by Id"},"400":{"description":"If id is null or not found"},"401":{"description":"Unauthorized Access"}}},"put":{"tags":["User"],"summary":"Update the user informed by Id","description":"Sample request:\r\n            \r\n    PUT api/User/\r\n    \r\n    {\r\n        \"firstName\": \"string\",\r\n        \"lastName\": \"string\",\r\n        \"username\": \"string\",\r\n        \"password\": \"string\",\r\n    }\r\n            \r\nThe fiedls username and password are optionals","operationId":"ApiUserByIdPut","consumes":["application/json-patch+json","application/json","text/json","application/*+json"],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"},{"name":"userDto","in":"body","description":"","required":false,"schema":{"$ref":"#/definitions/UserDto"}}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If the id is null or not found or the username is invalid"}}},"delete":{"tags":["User"],"summary":"Delet a specific user by id.","description":"Sample request:\r\n            \r\n    DELETE api/User/{id}","operationId":"ApiUserByIdDelete","consumes":[],"produces":[],"parameters":[{"name":"id","in":"path","description":"","required":true,"type":"integer","format":"int32"}],"responses":{"200":{"description":"Sucess"},"400":{"description":"If id is null or not found"},"401":{"description":"Unauthorized Access"}}}},"/api/User/auth":{"post":{"tags":["User"],"summary":"Get the access token to use the API","description":"Sample request:\r\n            \r\n    POST api/User/auth\r\n    \r\n    {\r\n        \"username\": \"string\",\r\n        \"password\": \"string\",\r\n    }","operationId":"ApiUserAuthPost","consumes":["application/json-patch+json","application/json","text/json","application/*+json"],"produces":[],"parameters":[{"name":"userDto","in":"body","required":false,"schema":{"$ref":"#/definitions/UserDto"}}],"responses":{"200":{"description":"Returns the user data and security token"},"400":{"description":"If id is null or not found or the username is invalid"}}}}},"definitions":{"ServiceDto":{"type":"object","properties":{"id":{"format":"int32","type":"integer"},"version":{"format":"int32","type":"integer"},"name":{"type":"string"}}},"SavingToggleDto":{"type":"object","properties":{"id":{"format":"int32","type":"integer"},"name":{"type":"string"},"state":{"type":"boolean"},"value":{"format":"int32","type":"integer"},"servicesList":{"type":"array","items":{"type":"string"}}}},"ToggleDto":{"type":"object","properties":{"id":{"format":"int32","type":"integer"},"name":{"type":"string"},"state":{"type":"boolean"}}},"UserDto":{"type":"object","properties":{"id":{"format":"int32","type":"integer"},"firstName":{"type":"string"},"lastName":{"type":"string"},"username":{"type":"string"},"password":{"type":"string"},"token":{"type":"string"}}}},"securityDefinitions":{"Bearer":{"name":"Authorization","in":"header","type":"apiKey","description":"JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""}},"security":[{"Bearer":[]}]}
+{
+   "swagger":"2.0",
+   "info":{
+      "version":"v1",
+      "title":"Toggle API",
+      "description":"A simple example ASP.NET Core 2.1 Web API",
+      "contact":{
+         "name":"Paulo Donatilio",
+         "url":"https://www.linkedin.com/in/pdonatilio/",
+         "email":"pdonatilio@gmail.com"
+      },
+      "license":{
+         "name":"Use under Gnu GPL",
+         "url":"https://www.gnu.org/licenses/gpl-3.0.pt-br.html"
+      }
+   },
+   "paths":{
+      "/api/Service":{
+         "get":{
+            "tags":[
+               "Service"
+            ],
+            "summary":"Get all services.",
+            "description":"Sample request:\r\n            \r\n    GET api/Service/",
+            "operationId":"ApiServiceGet",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               
+            ],
+            "responses":{
+               "200":{
+                  "description":"Returns a list with all services"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Service"
+            ],
+            "summary":"Create a New Service",
+            "description":"Sample request:\r\n            \r\n    POST api/Service/\r\n    \r\n    {\r\n        \"version\": int,\r\n        \"Name\": \"string\"\r\n    }",
+            "operationId":"ApiServicePost",
+            "consumes":[
+               "application/json-patch+json",
+               "application/json",
+               "text/json",
+               "application/*+json"
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"serviceDto",
+                  "in":"body",
+                  "required":false,
+                  "schema":{
+                     "$ref":"#/definitions/ServiceDto"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If version or name is null"
+               }
+            }
+         }
+      },
+      "/api/Service/{id}":{
+         "get":{
+            "tags":[
+               "Service"
+            ],
+            "summary":"Get a specific Service by id.",
+            "description":"Sample request:\r\n            \r\n    GET api/Service/{id}",
+            "operationId":"ApiServiceByIdGet",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Returns the service informed by Id"
+               },
+               "400":{
+                  "description":"If id is null or not found"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "Service"
+            ],
+            "summary":"Update the service informed by Id",
+            "description":"Sample request:\r\n            \r\n    PUT api/Service/\r\n    \r\n    {\r\n        \"version\": int,\r\n        \"name\": \"string\"\r\n    }",
+            "operationId":"ApiServiceByIdPut",
+            "consumes":[
+               "application/json-patch+json",
+               "application/json",
+               "text/json",
+               "application/*+json"
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               },
+               {
+                  "name":"serviceDto",
+                  "in":"body",
+                  "description":"",
+                  "required":false,
+                  "schema":{
+                     "$ref":"#/definitions/ServiceDto"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If the version or name is null"
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "Service"
+            ],
+            "summary":"Delet a specific service by id.",
+            "description":"Sample request:\r\n            \r\n    DELETE api/Service/{id}",
+            "operationId":"ApiServiceByIdDelete",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If id is null or not found"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         }
+      },
+      "/api/Service/toggles/{id}":{
+         "get":{
+            "tags":[
+               "Service"
+            ],
+            "summary":"Get all Toggles from a specific service by id.",
+            "description":"Sample request:\r\n            \r\n    GET api/Service/toggles/{id}",
+            "operationId":"ApiServiceTogglesByIdGet",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Return a list with all Toggles and the most important one of they"
+               },
+               "400":{
+                  "description":"If id is null or not found"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         }
+      },
+      "/api/Toggle":{
+         "get":{
+            "tags":[
+               "Toggle"
+            ],
+            "summary":"Get all toggles.",
+            "description":"Sample request:\r\n            \r\n    GET api/Toggle/",
+            "operationId":"ApiToggleGet",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               
+            ],
+            "responses":{
+               "200":{
+                  "description":"Returns a list with all toggles"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "Toggle"
+            ],
+            "summary":"Create a New Toggle",
+            "description":"Sample request:\r\n            \r\n    POST api/Toggle/\r\n    \r\n    To include All Services\r\n    {\r\n    \t\"Name\": \"string\",\r\n    \t\"State\": bolean,\r\n    \t\"Value\": int,\r\n    \t\"ServicesList\": [ \"All\" ]\r\n    }\r\n            \r\n    To include The Services 1,2,3 (By Id)\r\n    {\r\n    \t\"Name\": \"string\",\r\n    \t\"State\": bolean,\r\n    \t\"Value\": int,\r\n    \t\"ServicesList\": [ 1,2,3 ]\r\n    }",
+            "operationId":"ApiTogglePost",
+            "consumes":[
+               "application/json-patch+json",
+               "application/json",
+               "text/json",
+               "application/*+json"
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"toggleDto",
+                  "in":"body",
+                  "required":false,
+                  "schema":{
+                     "$ref":"#/definitions/SavingToggleDto"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If the fields name or ServicesList are null."
+               }
+            }
+         }
+      },
+      "/api/Toggle/{id}":{
+         "get":{
+            "tags":[
+               "Toggle"
+            ],
+            "summary":"Get a specific Toggle by id.",
+            "description":"Sample request:\r\n            \r\n    GET api/Toggle/{id}",
+            "operationId":"ApiToggleByIdGet",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Returns the toggle informed by Id"
+               },
+               "400":{
+                  "description":"If id is null or not found"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "Toggle"
+            ],
+            "summary":"Update the toggle informed by Id",
+            "description":"Sample request:\r\n            \r\n    PUT api/Toggle/\r\n    \r\n    {\r\n        \"version\": int,\r\n        \"name\": \"string\"\r\n    }",
+            "operationId":"ApiToggleByIdPut",
+            "consumes":[
+               "application/json-patch+json",
+               "application/json",
+               "text/json",
+               "application/*+json"
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               },
+               {
+                  "name":"toggleDto",
+                  "in":"body",
+                  "description":"",
+                  "required":false,
+                  "schema":{
+                     "$ref":"#/definitions/ToggleDto"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If the version or name is null"
+               }
+            }
+         }
+      },
+      "/api/User":{
+         "get":{
+            "tags":[
+               "User"
+            ],
+            "summary":"Get all users.",
+            "description":"Sample request:\r\n            \r\n    GET api/User/{id}",
+            "operationId":"ApiUserGet",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         },
+         "post":{
+            "tags":[
+               "User"
+            ],
+            "summary":"Create a New user",
+            "description":"Sample request:\r\n            \r\n    POST api/User/\r\n    \r\n    {\r\n        \"firstName\": \"string\",\r\n        \"lastName\": \"string\",\r\n        \"username\": \"string\",\r\n        \"password\": \"string\",\r\n    }",
+            "operationId":"ApiUserPost",
+            "consumes":[
+               "application/json-patch+json",
+               "application/json",
+               "text/json",
+               "application/*+json"
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"userDto",
+                  "in":"body",
+                  "required":false,
+                  "schema":{
+                     "$ref":"#/definitions/UserDto"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If username exists or password is null"
+               }
+            }
+         }
+      },
+      "/api/User/{id}":{
+         "get":{
+            "tags":[
+               "User"
+            ],
+            "summary":"Get a specific user by id.",
+            "description":"Sample request:\r\n            \r\n    GET api/User/{id}",
+            "operationId":"ApiUserByIdGet",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Returns the user informed by Id"
+               },
+               "400":{
+                  "description":"If id is null or not found"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         },
+         "put":{
+            "tags":[
+               "User"
+            ],
+            "summary":"Update the user informed by Id",
+            "description":"Sample request:\r\n            \r\n    PUT api/User/\r\n    \r\n    {\r\n        \"firstName\": \"string\",\r\n        \"lastName\": \"string\",\r\n        \"username\": \"string\",\r\n        \"password\": \"string\",\r\n    }\r\n            \r\nThe fiedls username and password are optionals",
+            "operationId":"ApiUserByIdPut",
+            "consumes":[
+               "application/json-patch+json",
+               "application/json",
+               "text/json",
+               "application/*+json"
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               },
+               {
+                  "name":"userDto",
+                  "in":"body",
+                  "description":"",
+                  "required":false,
+                  "schema":{
+                     "$ref":"#/definitions/UserDto"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If the id is null or not found or the username is invalid"
+               }
+            }
+         },
+         "delete":{
+            "tags":[
+               "User"
+            ],
+            "summary":"Delet a specific user by id.",
+            "description":"Sample request:\r\n            \r\n    DELETE api/User/{id}",
+            "operationId":"ApiUserByIdDelete",
+            "consumes":[
+               
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"id",
+                  "in":"path",
+                  "description":"",
+                  "required":true,
+                  "type":"integer",
+                  "format":"int32"
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Sucess"
+               },
+               "400":{
+                  "description":"If id is null or not found"
+               },
+               "401":{
+                  "description":"Unauthorized Access"
+               }
+            }
+         }
+      },
+      "/api/User/auth":{
+         "post":{
+            "tags":[
+               "User"
+            ],
+            "summary":"Get the access token to use the API",
+            "description":"Sample request:\r\n            \r\n    POST api/User/auth\r\n    \r\n    {\r\n        \"username\": \"string\",\r\n        \"password\": \"string\",\r\n    }",
+            "operationId":"ApiUserAuthPost",
+            "consumes":[
+               "application/json-patch+json",
+               "application/json",
+               "text/json",
+               "application/*+json"
+            ],
+            "produces":[
+               
+            ],
+            "parameters":[
+               {
+                  "name":"userDto",
+                  "in":"body",
+                  "required":false,
+                  "schema":{
+                     "$ref":"#/definitions/UserDto"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"Returns the user data and security token"
+               },
+               "400":{
+                  "description":"If id is null or not found or the username is invalid"
+               }
+            }
+         }
+      }
+   },
+   "definitions":{
+      "ServiceDto":{
+         "type":"object",
+         "properties":{
+            "id":{
+               "format":"int32",
+               "type":"integer"
+            },
+            "version":{
+               "format":"int32",
+               "type":"integer"
+            },
+            "name":{
+               "type":"string"
+            }
+         }
+      },
+      "SavingToggleDto":{
+         "type":"object",
+         "properties":{
+            "id":{
+               "format":"int32",
+               "type":"integer"
+            },
+            "name":{
+               "type":"string"
+            },
+            "state":{
+               "type":"boolean"
+            },
+            "value":{
+               "format":"int32",
+               "type":"integer"
+            },
+            "servicesList":{
+               "type":"array",
+               "items":{
+                  "type":"string"
+               }
+            }
+         }
+      },
+      "ToggleDto":{
+         "type":"object",
+         "properties":{
+            "id":{
+               "format":"int32",
+               "type":"integer"
+            },
+            "name":{
+               "type":"string"
+            },
+            "state":{
+               "type":"boolean"
+            }
+         }
+      },
+      "UserDto":{
+         "type":"object",
+         "properties":{
+            "id":{
+               "format":"int32",
+               "type":"integer"
+            },
+            "firstName":{
+               "type":"string"
+            },
+            "lastName":{
+               "type":"string"
+            },
+            "username":{
+               "type":"string"
+            },
+            "password":{
+               "type":"string"
+            },
+            "token":{
+               "type":"string"
+            }
+         }
+      }
+   },
+   "securityDefinitions":{
+      "Bearer":{
+         "name":"Authorization",
+         "in":"header",
+         "type":"apiKey",
+         "description":"JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+      }
+   },
+   "security":[
+      {
+         "Bearer":[
+            
+         ]
+      }
+   ]
+}
