@@ -25,7 +25,24 @@ Makefile sistemato
 
 **Gira tutto su HTTPS e le richieste HTTP le redireziona su HTTPS. Modificata una singola riga nel sorgente(commentata) per evitarlo**
 
-Utilizza JWT token che rendono tutto non fattibile senza il token statico.
+Per ottenere un JWT token:
+```
+curl -X POST "http://localhost:8080/api/User" -H "accept: application/json" -H "Content-Type: application/json-patch+json" -d "{ \"id\": 40, \"firstName\": \"string\", \"lastName\": \"string\", \"username\": \"string\", \"password\": \"string\", \"token\": \"string\"}"
+```
+```
+curl -X POST "http://localhost:8080/api/User/auth" -H "accept: application/json" -H "Content-Type: application/json-patch+json" -d "{ \"username\": \"string\", \"password\": \"string\"}"
+```
+Estrarre poi token dalla risposta (header: **Authorization: Bearer ey...**'):
+```
+{
+  "id": 40,
+  "firstName": "string",
+  "lastName": "string",
+  "username": "string",
+  "password": null,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjQwIiwibmJmIjoxNjEwNjIxOTk2LCJleHAiOjE2MTEyMjY3OTYsImlhdCI6MTYxMDYyMTk5Nn0.iLvhEaUUqx6oHfi6cbHbvjkn5xuHNsaEwAQSDU6sr7c"
+}
+```
 
 ###### [cs06_problems](https://github.com/medovuk/spring-boot-restful-api-example)
 **Specifica con un singolo errore semantico ed un warning. Sembra causato da qualche carattere codicicato male, quindi si può aggiustare (applicazione coreana)**
@@ -42,6 +59,8 @@ Specifica sistemata, Makefile sistemato
 
 Makefile sistemato
 
+Autenticazione statica con header: **Authorization: access_token_secret**
+
 ###### [cs09_safrs](https://github.com/thomaxxl/safrs)
 **Specifica swagger valida**
 
@@ -51,6 +70,15 @@ Makefile sistemato
 **Specifica swagger valida**
 
 Makefile sistemato
+
+Per ottenere un JWT token:
+```
+curl -X POST  http://localhost:8080/api/users -H "Content-Type: application/json-patch+json" -d "{ \"user\": { \"username\": \"Jacob\", \"email\": \"jake@jake.jake\", \"password\": \"jakejake\" } }"
+```
+```
+curl -X POST "http://localhost:9090/api/users/login" -H "Content-Type: application/json-patch+json" -d "{ \"user\":{\"email\": \"jake@jake.jake\", \"password\": \"jakejake\"}}"
+```
+Estrarre poi token dalla risposta (header: **Authorization: Bearer ey...**')
 
 ###### [cs11_crud](https://github.com/lucianopereira86/CRUD-NodeJS-Sequelize-Swagger-MySQL)
 **Specifica swagger con errori strutturali**
@@ -76,6 +104,11 @@ Bisognava farlo partire 2 volte. Però quando parte la seconda volta funziona. A
 
 Specifica sistemata, Makefile sistemato.
 
+Per ottenere un JWT token:
+```
+curl -X POST "http://localhost:8080/api/v1/users/login" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"email\": \"admin@admin\", \"password\": \"secret\"}"
+```
+Estrarre poi token dalla risposta (header: **Authorization: Bearer ey...**'):
 
 ## Bugs:
 - Tutti i Makefile sono da sistemare (bisogna essere sicuri che venga fatto il rebuild e che vengano eliminate le immagini anche intermedie)
