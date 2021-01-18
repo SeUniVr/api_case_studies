@@ -5,6 +5,11 @@
 
 Makefile sistemato
 
+Per ottenere un JWT token:
+```
+curl -X POST "http://localhost:9090/login" -H "accept: application/json" -H "Content-Type: application/json" -d "{\\"email\\":\\"test@user.com\\",\\"password\\":\\"password\\"}"
+```
+
 ###### [cs02_airline_ticket](https://github.com/erhanhepyasar/SpringBoot-Rest-App-AirlineTicket)
 **Specifica con errori semantici (credo si possa sistemare)**
 

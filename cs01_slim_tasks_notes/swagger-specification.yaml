@@ -8,14 +8,9 @@ info:
   contact: {}
   version: '1.0'
 servers:
-- url: https://rest-api-slim-php.herokuapp.com
-  description: Production server using Heroku.
 
 - url: http://localhost:8080
   description: My localhost server using PHP built-in web server.
-
-- url: http://localhost:8081
-  description: My localhost server using docker and docker compose.
 
 paths:
   /:
